@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid draw!!!! ! !</title>
+    <style>
+        #snake {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      text-align: center;
+    } 
+    body {
+        background-color: #808080;
+      }
+    </style>
+</head>
+
+<body>
+    <div>welcome to lampys super cool grid draw!!!</div>
+    <div>color options!! black-1, white-2, red-3, orange-4, yellow-5, green-6, blue-7, purple-8</div>
+    <div>also press E to use the eraser <3</div>
+    <canvas id="canvas" width="1420" height="720"></canvas>
+    <img id="snake" src="tinkaton.png">
+</body>
+<script>
+    document.addEventListener("keydown", keydownHandler)
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext("2d")
+    var snakeX = 60
+    var snakeY = 60
+    var color = "black"
+    
+
+    setInterval(drawSnake,100)
+    function drawSnake(){
+     ctx.fillStyle="#3356CD"
+     ctx.fillRect(snakeX, snakeY, 25, 25)
+    }
+  
+    function keydownHandler(e){
+        console.log(e)
+        debugger
+        if(e.key==="w"){
+            snakeY=snakeY-30
+            ctx.fillStyle=color
+            ctx.fillRect(snakeX, snakeY+30, 25, 25)
+        }if(e.key==="s"){
+            snakeY=snakeY+30
+            ctx.fillStyle=color
+            ctx.fillRect(snakeX, snakeY-30, 25, 25)
+        }if(e.key==="d"){
+            snakeX=snakeX+30
+            ctx.fillStyle=color
+            ctx.fillRect(snakeX-30, snakeY, 25, 25)
+        }if(e.key==="a"){
+            snakeX=snakeX-30
+            ctx.fillStyle=color
+            ctx.fillRect(snakeX+30, snakeY, 25, 25)
+        }if(e.key==="1"){
+            color = "black"
+        }if(e.key==="2"){
+            color = "white"
+        }if(e.key==="3"){
+            color = "red"
+        }if(e.key==="4"){
+            color = "orange"
+        }if(e.key==="5"){
+            color = "yellow"
+        }if(e.key==="6"){
+            color = "green"
+        }if(e.key==="7"){
+            color = "blue"
+        }if(e.key==="8"){
+            color = "purple"
+        }if(e.key==="e"){
+            color = "#808080"
+        }
+    }
+    
+</script>
+
+</html>
