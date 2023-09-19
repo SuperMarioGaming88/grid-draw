@@ -32,12 +32,22 @@
     var snakeX = 60
     var snakeY = 60
     var color = "black"
+    var penColor = "#3356CD"
+    var drawing = true
     
 
     setInterval(drawSnake,100)
     function drawSnake(){
-     ctx.fillStyle="#3356CD"
+     ctx.fillStyle=penColor
      ctx.fillRect(snakeX, snakeY, 25, 25)
+     if(color!=="nothing"){
+        drawing=true
+        penColor = "#3356CD"
+     }else{
+        ctx.clearRect(snakeX, snakeY, 25, 25)
+        ctx.fillRect(snakeX, snakeY, 25, 25)
+        penColor = "#C91919"
+     }
     }
   
     function keydownHandler(e){
@@ -45,20 +55,36 @@
         debugger
         if(e.key==="w"){
             snakeY=snakeY-30
+            if(drawing===true){
             ctx.fillStyle=color
             ctx.fillRect(snakeX, snakeY+30, 25, 25)
+            }else{
+                ctx.clearRect(snakeX, snakeY+30, 25, 25)
+            }
         }if(e.key==="s"){
             snakeY=snakeY+30
+            if(drawing===true){
             ctx.fillStyle=color
             ctx.fillRect(snakeX, snakeY-30, 25, 25)
+            }else{
+                ctx.clearRect(snakeX, snakeY-30, 25, 25)
+            }
         }if(e.key==="d"){
             snakeX=snakeX+30
+            if(drawing===true){
             ctx.fillStyle=color
             ctx.fillRect(snakeX-30, snakeY, 25, 25)
+            }else{
+                ctx.clearRect(snakeX-30, snakeY, 25, 25)
+            }
         }if(e.key==="a"){
             snakeX=snakeX-30
+            if(drawing===true){
             ctx.fillStyle=color
             ctx.fillRect(snakeX+30, snakeY, 25, 25)
+            }else{
+                ctx.clearRect(snakeX+30, snakeY, 25, 25)
+            }
         }if(e.key==="1"){
             color = "black"
         }if(e.key==="2"){
@@ -75,8 +101,10 @@
             color = "blue"
         }if(e.key==="8"){
             color = "purple"
-        }if(e.key==="e"){
-            color = "#808080"
+        }
+        if(e.key==="e"){
+            color="nothing"
+            drawing=false
         }
     }
     
